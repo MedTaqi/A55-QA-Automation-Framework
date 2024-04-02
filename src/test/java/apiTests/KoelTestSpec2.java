@@ -53,7 +53,24 @@ public class KoelTestSpec2 {
        InnerRule innerRule = rules[0].getRules()[0];
        System.out.println("model:" + innerRule.getModel());
 
+        Assert.assertEquals(playlists[0].getName(),"momo");
+    }
+
+    @Test
+    public void changePlaylistName(){
+        Response response = given()
+                .spec(requestSpec).log().headers()
+                .baseUri("https://qa.koel.app")
+                .basePath("/api/playlist")
+                .get()
+                .then().statusCode(200).extract().response();
+        JsonPath json = response.jsonPath();
+        Playlist[]playlists = response.as(Playlist[].class);
+        Rule[]rules = json.getObject("rules[0]", Rule[].class);
+        InnerRule innerRule = rules[0].getRules()[0];
+        System.out.println("model:" + innerRule.getModel());
 
         Assert.assertEquals(playlists[0].getName(),"momo");
     }
+
 }
