@@ -47,7 +47,6 @@ public class Test0713 extends BaseTest{
         loginPage.logIn();
         Assert.assertTrue(homePage.loggedIn().isDisplayed());
         homePage.contextClickPlaylist1();
-        homePage.editPlaylist();
         homePage.clickDelete();
         Assert.assertEquals(homePage.playlistDeleted(),notification3);
     }
