@@ -34,7 +34,7 @@ public class BaseTest {
     threadDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     threadDriver.get().manage().window().maximize();
     threadDriver.get().manage().deleteAllCookies();
-    wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
+    wait = new WebDriverWait(getDriver(),Duration.ofSeconds(5));
     actions = new Actions(getDriver());
     PageFactory.initElements(driver,this);
     getDriver().get(BaseUrl);
