@@ -9,7 +9,7 @@ public class LoginPage extends BasePage{
     private WebElement emailField;
     @FindBy(css = "[type='password']")
     private WebElement passwordField;
-    @FindBy(css = "[type='email']")
+    @FindBy(css = "[type='submit']")
     private WebElement clickBtn;
 
 
@@ -31,7 +31,7 @@ public class LoginPage extends BasePage{
     public LoginPage logIn(){
         provideEmail("taqimed99@gmail.com");
         providePassword("Med-20115-010499@");
-        clickBtn.click();
+        click();
         return this;
     }
 }
