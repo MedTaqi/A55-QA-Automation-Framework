@@ -9,16 +9,16 @@ public class Test0713 extends BaseTest{
     String notification3= "Deleted playlist \"Test2.\"";
     @Test(priority = 0)
     public void loginValidCredentials() {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.logIn();
         Assert.assertTrue(homePage.loggedIn().isDisplayed());
     }
     @Test(priority = 1)
     public void createPlaylist(){
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.logIn();
         Assert.assertTrue(homePage.loggedIn().isDisplayed());
@@ -29,8 +29,8 @@ public class Test0713 extends BaseTest{
     }
     @Test (priority = 2)
     public void renamePlaylist(){
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.logIn();
         Assert.assertTrue(homePage.loggedIn().isDisplayed());
@@ -41,8 +41,8 @@ public class Test0713 extends BaseTest{
     }
     @Test (priority = 3)
     public void DeletePlaylist(){
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
 
         loginPage.logIn();
         Assert.assertTrue(homePage.loggedIn().isDisplayed());

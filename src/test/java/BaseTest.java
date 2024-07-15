@@ -19,9 +19,9 @@ import java.time.Duration;
 import java.util.HashMap;
 
 public class BaseTest {
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Actions actions;
+    public static WebDriver driver;
+    public static WebDriverWait wait;
+    public static Actions actions;
     private final ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
 
     public WebDriver getDriver() {
@@ -34,15 +34,15 @@ public class BaseTest {
     threadDriver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     threadDriver.get().manage().window().maximize();
     threadDriver.get().manage().deleteAllCookies();
-    wait = new WebDriverWait(getDriver(),Duration.ofSeconds(5));
+    wait = new WebDriverWait(getDriver(),Duration.ofSeconds(20));
     actions = new Actions(getDriver());
     PageFactory.initElements(driver,this);
     getDriver().get(BaseUrl);
     }
 
-    private WebDriver pickBrowser(String browser) throws MalformedURLException {
+   public WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
-        String gridUrl = "http://192.168.1.150:4444";
+        String gridUrl = "http://192.168.1.150:4444/";
         switch (browser){
             case "firefox":
             WebDriverManager.firefoxdriver().setup();
@@ -76,17 +76,17 @@ public class BaseTest {
         }
     }
 
-    private WebDriver lambdaTest() throws MalformedURLException {
+    public WebDriver lambdaTest() throws MalformedURLException {
         String hubURL = "https://hub.lambdatest.com/wd/hub";
         ChromeOptions browserOptions = new ChromeOptions();
         browserOptions.setPlatformName("Windows 10");
-        browserOptions.setBrowserVersion("127");
+        browserOptions.setBrowserVersion("126");
         HashMap<String, Object> ltOptions = new HashMap<String, Object>();
         ltOptions.put("username", "taqimed99");
         ltOptions.put("accessKey", "4pgzKgaVZzOS73tKVr8OmRqfKbWP14B21ArvrmZlll7yLKrab3");
         ltOptions.put("project", "Untitled");
+        ltOptions.put("selenium_version", "4.0.0");
         ltOptions.put("w3c", true);
-        ltOptions.put("plugin", "java-testNG");
         browserOptions.setCapability("LT:Options", ltOptions);
         return new RemoteWebDriver(new URL(hubURL), browserOptions);
     }
